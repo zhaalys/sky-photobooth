@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #f49d25;
+  --color-secondary: #3b82f6;
+  --color-accent: #fde047;
+  --color-background-light: #f8f7f5;
+  --color-background-dark: #221a10;
+
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-impact: "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .retro-border {
+    border: 4px solid #181511;
+    box-shadow: 4px 4px 0px #181511;
+  }
+  .retro-glow {
+    box-shadow:
+      0 0 20px rgba(244, 157, 37, 0.6),
+      4px 4px 0px #181511;
+  }
+  .pixel-bg {
+    background-image: radial-gradient(#f49d25 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .pixel-pattern {
+    background-color: var(--color-background-light);
+    background-image: radial-gradient(#f49d25 0.5px, transparent 0.5px);
+    background-size: 8px 8px;
+  }
+  .mirror-view {
+    transform: scaleX(-1);
+  }
+  .retro-frame {
+    border: 12px solid #181511;
+    box-shadow: inset 0 0 0 4px #f49d25;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background-light);
+  color: #0f172a; /* text-slate-900 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
